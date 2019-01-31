@@ -6,6 +6,7 @@ const app           = express();
 const fs            = require('fs');
 const path          = require('path');
 const versionParser = require('./version-parser');
+const github        = require('./github');
 
 const releasesDirectory = './releases';
 
@@ -61,6 +62,8 @@ app.get('/update-firmware', function (req, res) {
 
 
 });
+
+app.get('/pull-git', github);
 
 app.listen(process.env.SERVER_PORT, function () {
   logger.info('Server running on port ' + process.env.SERVER_PORT);
