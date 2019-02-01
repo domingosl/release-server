@@ -10,7 +10,6 @@ module.exports = (req, res) => {
     const key  = process.env.GITHUB_HOOK_SECRET;
     const hash = "sha1=" + crypto.createHmac('sha1', key).update(JSON.stringify(req.body)).digest('hex');
 
-
     if(hash === sign) {
         res.send("OK");
         logger.info("Pulling git!");
