@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const github = require('simple-git')();
-const logger = require('./logger');
+const logger = require('../utils/logger');
 
 module.exports = (req, res) => {
 
