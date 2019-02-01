@@ -9,6 +9,7 @@ module.exports = (req, res) => {
     console.log(req.body);
     console.log(JSON.stringify(req.body));
 
+
     const sign = req.headers['x-hub-signature'];
     const key  = process.env.GITHUB_HOOK_SECRET;
     const hash = "sha1=" + crypto.createHmac('sha1', key).update(JSON.stringify(req.body)).digest('hex');
