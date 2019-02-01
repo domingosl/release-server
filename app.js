@@ -2,6 +2,7 @@ require('dotenv').load();
 
 const logger        = require('./logger');
 const express       = require('express');
+const bodyParser    = require('body-parser');
 const app           = express();
 const fs            = require('fs');
 const path          = require('path');
@@ -9,6 +10,12 @@ const versionParser = require('./version-parser');
 const github        = require('./github');
 
 const releasesDirectory = './releases';
+
+
+
+app.use(bodyParser.json({limit: '1mb'}));
+app.use(bodyParser.urlencoded({limit: '1mb', extended: true, parameterLimit: 100}));
+
 
 let releases = [];
 
