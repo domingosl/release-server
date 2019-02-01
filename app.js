@@ -63,7 +63,7 @@ app.get('/update-firmware', function (req, res) {
 
 });
 
-app.get('/pull-git', github);
+app.post('/pull-git', github);
 
 app.listen(process.env.SERVER_PORT, function () {
   logger.info('Server running on port ' + process.env.SERVER_PORT);
