@@ -18,8 +18,10 @@ module.exports = (req, res) => {
             if (err)
                 throw err;
 
-            logger.info("Pull completed", response.summary);
-            
+            logger.info("Pull completed, process will exit in 3 seconds...", response.summary);
+
+            setTimeout(() => process.exit(), 3000);
+
         });
     }
     else {
