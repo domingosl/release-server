@@ -11,6 +11,7 @@ module.exports = (req, res) => {
     const hash = "sha1=" + crypto.createHmac('sha1', key).update(JSON.stringify(req.body)).digest('hex');
 
     if(hash === sign) {
+
         res.send("OK");
         logger.info("Pulling git!");
         github.pull((err, response) => {
@@ -22,6 +23,7 @@ module.exports = (req, res) => {
             setTimeout(() => process.exit(), 3000);
 
         });
+
     }
     else {
         res.send("KO");
