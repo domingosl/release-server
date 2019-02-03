@@ -10,6 +10,9 @@ module.exports.init = (_releasesDirectory) => {
 
     releasesDirectory = _releasesDirectory;
 
+    if(!fs.existsSync(releasesDirectory))
+        fs.mkdirSync(releasesDirectory);
+
     fs.readdir(releasesDirectory, (err, files) => {
 
         files.forEach(directory => {
@@ -44,6 +47,8 @@ module.exports.init = (_releasesDirectory) => {
     });
 
 };
+
+module.exports.getReleaseDirectoryName = () => releasesDirectory;
 
 module.exports.update = (r) => module.exports.init(r || releasesDirectory);
 
