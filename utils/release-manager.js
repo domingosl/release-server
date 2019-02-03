@@ -56,6 +56,9 @@ module.exports.get = (currentVersion) => {
 
     if(!currentVersion) return null;
 
+    if(releases.length === 0)
+        return null;
+
     const found = releases.reduce(
         (prev, cur) => 
         prev.versionDecimal < cur.versionDecimal && 
