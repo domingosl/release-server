@@ -64,6 +64,6 @@ module.exports.get = (currentVersion) => {
         prev.versionDecimal < cur.versionDecimal && 
         cur.target === currentVersion.target ? cur : prev);
 
-    return found.target === currentVersion.target ? found : null;
+    return found.target === currentVersion.target && found.versionDecimal > currentVersion.versionDecimal ? found : null;
 
 };
