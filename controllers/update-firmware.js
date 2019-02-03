@@ -10,8 +10,10 @@ module.exports = (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
 
-    if(!currentVersion || !currentFirmwareHash)
+    if(!currentVersion || !currentFirmwareHash) {
+        logger.error("Bad request format");
         return res.status(304).send("Invalid request format.");
+    }
 
     const release = releasesManager.get(currentVersion);
 
@@ -23,7 +25,7 @@ module.exports = (req, res) => {
     }
 
     logger.info("Sending new firmware.", { newVersion: release.versionDecimal });
-    return res.sendFile(path.join(__dirname, release.bin));
+    return res.sendFile(path.join(appRoot, release.bin));
 
 
 };
