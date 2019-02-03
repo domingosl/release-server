@@ -67,3 +67,5 @@ module.exports.get = (currentVersion) => {
     return found.target === currentVersion.target && found.versionDecimal > currentVersion.versionDecimal ? found : null;
 
 };
+
+module.exports.getAll = () => releases;

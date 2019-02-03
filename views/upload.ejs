@@ -33,6 +33,7 @@
   </header>
 
   <main role="main" class="inner cover">
+
     <h4 class="cover-heading">Upload new release</h4>
     <br />
     <form method="POST" action="/upload-release" enctype="multipart/form-data">
@@ -70,7 +71,17 @@
         <br />
         <button type="submit" class="btn btn-outline-primary btn-lg">Upload</button>
 
-      </form>
+    </form>
+    <br /><br />
+    <h5>Firmwares availables</h5>
+    <ul class="list-group">
+        <% for (var i = 0; i < releases.length; i++) { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= releases[i].target %>
+          <span class="badge badge-primary badge-pill"><%= releases[i].major %>.<%= releases[i].minor %>.<%= releases[i].patch %></span>
+        </li>
+        <% } %>
+      </ul>
 
   </main>
 

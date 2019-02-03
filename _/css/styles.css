@@ -43,6 +43,11 @@ body {
 }
 
 
+li {
+    background: transparent !important;
+    border-color: white !important;
+}
+
 /*
  * Header
  */
