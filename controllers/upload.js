@@ -16,6 +16,8 @@ module.exports = (req, res) => {
 
     fs.writeFileSync(path.join(releaseManager.getReleaseDirectoryName(), version.folderName, version.filename), req.file.buffer);
     
+    releaseManager.update();
+
     res.redirect('/upload.html');
 
 };
